@@ -140,16 +140,37 @@ int main()
 
     //START of assigning to queues
 
-//    Q.assign(names2, numRecords);//ALSO IMPORTANT!! I CAN'T FIGURE OUT TO HOW TO MAKE IT RETURN THE QUEUES
-//    Q.getQLeft();               //IF IT CAN'T RETURN IT THEN IT CAN'T BE USED OUTSIDE OF THE CLASS
-//                                //AND WE NEED IT TO BE ABLE TO MAKE STUDENTS IN THE QUEUE PICK THEIR TRAYS
+    queue<string>qRight;
+    queue<string>qLeft;
+    
+    for(int i = 0; i < numRecords; i++)
+    {
+        if(qRight.size() < qLeft.size())
+        {
+            qRight.push(names[i]);
+        }
+        else if(qRight.size() > qLeft.size())
+        {
+            qLeft.push(names[i]);
+        }
+        else
+        {
+            int randomQ = rand()%2;
+            if(randomQ == 1)
+                qRight.push(names[i]);
+            else
+                qLeft.push(names[i]);
+        }
+
+
+    }
 
     //END of assignin to Queues
 
 
-    //START OF ASSIGNING AND SHUFFLING TRAY COLORS //IMPORTANT!!!!! from here to line 198
-    srand(time(0));                                 //i can't figure out how to make it into a function to place it into
-    const int VECTOR_SIZE = 120;                    //a class of its own so that it does not crowd the Main Function
+    //START OF ASSIGNING AND SHUFFLING TRAY COLORS 
+    srand(time(0));                                 
+    const int VECTOR_SIZE = 120;                    
 
     // Define a template class vector of int
     typedef vector<string, allocator<string> > IntVector;
