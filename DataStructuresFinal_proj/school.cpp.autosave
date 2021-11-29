@@ -1,0 +1,51 @@
+#include<school.h>
+#include<iostream>
+#include<fstream>
+#include<stdlib.h>
+using namespace std;
+
+//Initializong the variables to the prices that will be used to calculate totalBill
+const float School::fishsticks = 4.00;
+const float School::chicken = 4.75 ;
+const float School::lasagna = 3.75;
+const float School::cheesecake = 2.50;
+const float School::pudding = 1.25;
+const float School::salad = 1.50;
+
+School::School()
+{
+    //clears both totalBill and schoolName by assigning the
+    totalBill = 0.00;
+    for(int i = 0; i < 30; i++)
+    {
+        schoolName[i] = '\0';
+    }
+    
+}
+School::School(char*)
+{
+    
+}
+School::~School()
+{
+
+    
+}
+void School::printStudentBody()
+{
+    std::ifstream f("studentBody.txt");
+
+      if(f.is_open())
+       std::cout << f.rdbuf();
+
+}
+
+float School::getBill()
+{
+    return totalBill;
+}
+
+char *School::getSchoolName()
+{
+    return schoolName;
+}
